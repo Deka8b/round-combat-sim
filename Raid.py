@@ -3,7 +3,6 @@ import time
 
 from collectingloot import add_to_inv
 from collectingloot import item_counter
-from progressbar import ProgressBar
 
 # Postaci uczestniczące w walce:
 

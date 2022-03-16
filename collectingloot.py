@@ -1,4 +1,3 @@
-
 def add_to_inv(where: list, to: dict):
     for item in where:
         to.setdefault(item, 0)
