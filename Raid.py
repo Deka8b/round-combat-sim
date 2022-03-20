@@ -3,6 +3,8 @@ import time
 
 from collectingloot import add_to_inv
 from collectingloot import item_counter
+from progressbar import ProgressBar
+from lekcja10 import percentage_hp
 
 # Postaci uczestniczące w walce:
 
@@ -99,7 +101,6 @@ def fight_round(hero_order, enemy):
         enemy.attack_enemy(mage)
     elif a == 20:
         enemy.attack_enemy(archer)
-
     print("\n")
 
 # Rycerz potrafi się leczyć -> linie 28 - 30 :
@@ -110,7 +111,6 @@ def fight_round(hero_order, enemy):
 # Drużyna walczy w pętli tak długo aż jeden z bohaterów nie padnie
 
 def game():
-
     kolejnosc = input("Select attack order. 1 - knight, 2 - mage, 3- archer. Ex. 3,1,2: ").split(",")
     time.sleep(1)
     hero_dict = {"1": knight, "2": mage, "3": archer}
@@ -121,7 +121,7 @@ def game():
     while knight.hp > 0 and mage.hp > 0 and archer.hp > 0 and enemy.hp > 0:
 
         fight_round(hero_order, enemy)
-        time.sleep(1)
+        time.sleep(0.5)
 
     # Jeśli wygra drużyna, zabiera ekwipunek potwora
 

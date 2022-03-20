@@ -13,3 +13,4 @@ def item_counter(eq: dict):
         items_total += total
     return f"All items: {items_total}"
 
+
