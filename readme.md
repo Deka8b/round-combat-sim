@@ -11,10 +11,10 @@ The "walka" folder consist the following files:
 - hp_bar.py contains function responsible for correct display life-meter bar
 
 # Additional challenges :bulb:
-[ ] Add more special skills
-[ ] Add more characters
-[ ] Add animations and graphic 
-[ ] :hammer: Add life bar
+[ ] Add more special skills  
+[ ] Add more characters  
+[ ] Add animations and graphic  
+[ ] :hammer: Add life bar  
 
 # Sources
 This simple turn-based combat is inspired by many old turn-based computer games from my childhood, like Heroes III.
