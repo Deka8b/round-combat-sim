@@ -4,7 +4,6 @@ import time
 from collectingloot import add_to_inv
 from collectingloot import item_counter
 from progressbar import ProgressBar
-from lekcja10 import percentage_hp
 
 # Postaci uczestniczące w walce:
 
@@ -64,8 +63,20 @@ class Enemy(Character):
     eq = ["gold coins", "small sapphire", "gold coins",
                    "dragons tongue", "dragons scales", "gold coins", "dragons claws"]
 
-    def __init__(self, attack, defence, power, hp):
+    def __init__(self, attack, defence, power, hp, special_meter):
         super().__init__(attack, defence, power, hp)
+        self.special_meter = special_meter
+
+    def special_skill(self):
+        print("\r **** Monster cursed the team. The team attack and defence decreased. ***")
+        knight.attack = (knight.attack * 0.60)
+        knight.defence = (knight.defence * 0.60)
+        mage.attack = (mage.attack * 0.60)
+        mage.defence = (mage.defence * 0.60)
+        archer.attack = (archer.attack * 0.60)
+        archer.defence = (archer.defence * 0.60)
+
+
 
 
 # Obiekty jako gotowa postać:
@@ -73,7 +84,7 @@ class Enemy(Character):
 knight = Tank(100, 400, 200, 2500)
 mage = Sorcerer(400, 200, 700, 800, 0)
 archer = Bowman(200, 200, 400, 1100, 0)
-enemy = Enemy(250, 500, 500, 5000)
+enemy = Enemy(250, 500, 500, 5000, 0)
 
 
 # Jedna runda
@@ -97,10 +108,17 @@ def fight_round(hero_order, enemy):
     a = random.randint(1, 20)
     if a in range(1, 18):
         enemy.attack_enemy(knight)
+        enemy.special_meter += 1
     elif a == 19:
         enemy.attack_enemy(mage)
+        enemy.special_meter += 1
     elif a == 20:
         enemy.attack_enemy(archer)
+        enemy.special_meter += 1
+
+    if enemy.special_meter == 2:
+        enemy.special_skill()
+        enemy.special_meter = 0
     print("\n")
 
 # Rycerz potrafi się leczyć -> linie 28 - 30 :
